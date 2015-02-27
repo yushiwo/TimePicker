@@ -230,7 +230,7 @@ public class TimePicker extends BaseLayout {
     private void buildAdapters() {
         mAdapterDate = new ArrayWheelAdapter(TextUtil.getStringArray(R.array.time_picker_date));
         mAdapterHour = new NumberWheelAdapter(0, 24, 1, "点");
-        mAdapterMinute = new NumberWheelAdapter(0, 60, 10, "分");
+        mAdapterMinute = new NumberWheelAdapter(0, 60, 1, "分");
     }
 
     /**
