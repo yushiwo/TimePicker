@@ -8,9 +8,6 @@ import com.example.base.BaseActivity;
 import com.example.timepicker.R;
 import com.example.timepicker.TimePicker;
 import com.example.timepicker.TimePicker.TimePickerListener;
-import com.example.util.LogUtil;
-
-import datetime.DateTime;
 
 public class MainActivity extends BaseActivity implements TimePickerListener {
 
@@ -24,9 +21,8 @@ public class MainActivity extends BaseActivity implements TimePickerListener {
         mTimePicker.setTimePickerListener(this);
     }
 
-    @Override
-    public void onPick(DateTime time) {
-        LogUtil.d(getLogTag(), "onPick calendar : " + time.toString());
-        Toast.makeText(getBaseContext(), "已选时间：" + time.toString(), Toast.LENGTH_SHORT).show();
-    }
+	@Override
+	public void onPick(int hour, int minute) {
+		Toast.makeText(getBaseContext(), "已选时间 = " + hour + ":" + minute, Toast.LENGTH_SHORT).show();
+	}
 }

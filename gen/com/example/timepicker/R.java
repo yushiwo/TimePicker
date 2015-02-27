@@ -109,9 +109,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int left=0x7f040000;
         public static final int right=0x7f040002;
         public static final int time_picker=0x7f040003;
-        public static final int wheel_view_date=0x7f040004;
-        public static final int wheel_view_hour=0x7f040005;
-        public static final int wheel_view_minute=0x7f040006;
+        public static final int wheel_view_hour=0x7f040004;
+        public static final int wheel_view_minute=0x7f040005;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;

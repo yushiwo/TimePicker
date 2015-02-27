@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import com.example.base.BaseLayout;
@@ -26,8 +27,8 @@ import datetime.DateTime;
 public class TimePicker extends BaseLayout {
     private static final int MSG_TIME_PICKED = 0;
     /** 滚轮：天 */
-    @ViewInject(id = R.id.wheel_view_date)
-    private WheelView mWheelDate;
+//    @ViewInject(id = R.id.wheel_view_date)
+//    private WheelView mWheelDate;
     /** 滚轮：小时 */
     @ViewInject(id = R.id.wheel_view_hour)
     private WheelView mWheelHour;
@@ -36,7 +37,7 @@ public class TimePicker extends BaseLayout {
     private WheelView mWheelMinute;
 
     /** 滚轮适配器：天 */
-    private WheelAdapter mAdapterDate;
+    //private WheelAdapter mAdapterDate;
     /** 滚轮适配器：小时 */
     private NumberWheelAdapter mAdapterHour;
     /** 滚轮适配器：分钟 */
@@ -49,7 +50,7 @@ public class TimePicker extends BaseLayout {
             switch (msg.what) {
             case MSG_TIME_PICKED:
                 if (mTimePickerListener != null)
-                    mTimePickerListener.onPick(getDateTime());
+                    mTimePickerListener.onPick(mWheelHour.getCurrentValue(), mWheelMinute.getCurrentValue());
                 break;
             }
         };
@@ -67,11 +68,11 @@ public class TimePicker extends BaseLayout {
     @Override
     protected void onInit() {
         buildAdapters();
-        mWheelDate.setAdapter(mAdapterDate);
+        //mWheelDate.setAdapter(mAdapterDate);
         mWheelHour.setAdapter(mAdapterHour);
         mWheelMinute.setAdapter(mAdapterMinute);
         ScrollListener listener = createScrollListener();
-        mWheelDate.setScrollListener(listener);
+        //mWheelDate.setScrollListener(listener);
         mWheelHour.setScrollListener(listener);
         mWheelMinute.setScrollListener(listener);
         onSelected(null);
@@ -90,11 +91,12 @@ public class TimePicker extends BaseLayout {
     }
 
     public void onSelected(View v) {
-        if (checkInvalidTime())
-            return;
-        checkDateAvailable();
-        checkHourAvailable();
-        checkMinuteAvailable();
+    	Log.d("zr", "onSelected");
+        //if (checkInvalidTime())
+            //return;
+        //checkDateAvailable();
+        //checkHourAvailable();
+        //checkMinuteAvailable();
     }
 
     private boolean checkInvalidTime() {
@@ -108,7 +110,7 @@ public class TimePicker extends BaseLayout {
     }
 
     private void selectFirstAvailableTime() {
-        selectFirstAvailableDate();
+        //selectFirstAvailableDate();
         selectFirstAvailableHour();
         selectFirstAvailableMinute();
     }
@@ -116,102 +118,102 @@ public class TimePicker extends BaseLayout {
     private void selectFirstAvailableMinute() {
         DateTime availableTime = getAvailableDateTime();
         int minute = availableTime.getMinute();
-        mWheelMinute.setStartValue(minute);
+        mWheelMinute.setStartValue(0);
         mWheelMinute.setCurrentValue(minute);
     }
 
     private void selectFirstAvailableHour() {
         DateTime availableTime = getAvailableDateTime();
         int hour = availableTime.getHour();
-        mWheelHour.setStartValue(hour);
+        mWheelHour.setStartValue(0);
         mWheelHour.setCurrentValue(hour);
     }
 
-    private void selectFirstAvailableDate() {
-        if (isTodayAvailable())
-            return;
-        selectTomorrow();
-    }
+//    private void selectFirstAvailableDate() {
+//        if (isTodayAvailable())
+//            return;
+//        selectTomorrow();
+//    }
+//
+//    private void checkMinuteAvailable() {
+//        int availableMinuteInSelectedDateHour = getAvailableMinuteInSelectedDateHour();
+//        DateTime selectedDateTime = getDateTime();
+//        int selectedMinute = selectedDateTime.getMinute();
+//        mWheelMinute.setStartValue(availableMinuteInSelectedDateHour);
+//        if (selectedMinute < availableMinuteInSelectedDateHour)
+//            mWheelMinute.setCurrentValue(availableMinuteInSelectedDateHour);
+//        else
+//            mWheelMinute.setCurrentValue(selectedMinute);
+//    }
 
-    private void checkMinuteAvailable() {
-        int availableMinuteInSelectedDateHour = getAvailableMinuteInSelectedDateHour();
-        DateTime selectedDateTime = getDateTime();
-        int selectedMinute = selectedDateTime.getMinute();
-        mWheelMinute.setStartValue(availableMinuteInSelectedDateHour);
-        if (selectedMinute < availableMinuteInSelectedDateHour)
-            mWheelMinute.setCurrentValue(availableMinuteInSelectedDateHour);
-        else
-            mWheelMinute.setCurrentValue(selectedMinute);
-    }
+//    private void checkHourAvailable() {
+//        int availableHourInSelectedDate = getAvailableHourInSelectedDate();
+//        DateTime selectedDateTime = getDateTime();
+//        int selectedHour = selectedDateTime.getHour();
+//        mWheelHour.setStartValue(availableHourInSelectedDate);
+//        if (selectedHour < availableHourInSelectedDate)
+//            mWheelHour.setCurrentValue(availableHourInSelectedDate);
+//        else
+//            mWheelHour.setCurrentValue(selectedHour);
+//    }
 
-    private void checkHourAvailable() {
-        int availableHourInSelectedDate = getAvailableHourInSelectedDate();
-        DateTime selectedDateTime = getDateTime();
-        int selectedHour = selectedDateTime.getHour();
-        mWheelHour.setStartValue(availableHourInSelectedDate);
-        if (selectedHour < availableHourInSelectedDate)
-            mWheelHour.setCurrentValue(availableHourInSelectedDate);
-        else
-            mWheelHour.setCurrentValue(selectedHour);
-    }
+//    private boolean isTodayAvailable() {
+//        DateTime currentTime = getCurrentDateTime();
+//        DateTime availableTime = getAvailableDateTime();
+//        return availableTime.getDay() == currentTime.getDay();
+//    }
 
-    private boolean isTodayAvailable() {
-        DateTime currentTime = getCurrentDateTime();
-        DateTime availableTime = getAvailableDateTime();
-        return availableTime.getDay() == currentTime.getDay();
-    }
+//    private int getAvailableHourInSelectedDate() {
+//        DateTime availableTime = getAvailableDateTime();
+//        if (isTodaySelected())
+//            return availableTime.getHour();
+//        if (isTomorrowSelected()) {
+//            if (isTodayAvailable())
+//                return 0;
+//            else
+//                return availableTime.getHour();
+//        }
+//        return 0;
+//    }
 
-    private int getAvailableHourInSelectedDate() {
-        DateTime availableTime = getAvailableDateTime();
-        if (isTodaySelected())
-            return availableTime.getHour();
-        if (isTomorrowSelected()) {
-            if (isTodayAvailable())
-                return 0;
-            else
-                return availableTime.getHour();
-        }
-        return 0;
-    }
+//    private int getAvailableMinuteInSelectedDateHour() {
+//        DateTime availableTime = getAvailableDateTime();
+//        if (isAvailableDateSelected() && isAvailableHourSelected())
+//            return availableTime.getMinute();
+//        return 0;
+//    }
+//
+//    private boolean isAvailableDateSelected() {
+//        DateTime availableTime = getAvailableDateTime();
+//        DateTime selectedTime = getDateTime();
+//        return availableTime.getDay() == selectedTime.getDay();
+//    }
+//
+//    private boolean isAvailableHourSelected() {
+//        int selectedHour = mWheelHour.getCurrentValue();
+//        DateTime availableTime = getAvailableDateTime();
+//        int availableHour = availableTime.getHour();
+//        return selectedHour == availableHour;
+//    }
 
-    private int getAvailableMinuteInSelectedDateHour() {
-        DateTime availableTime = getAvailableDateTime();
-        if (isAvailableDateSelected() && isAvailableHourSelected())
-            return availableTime.getMinute();
-        return 0;
-    }
-
-    private boolean isAvailableDateSelected() {
-        DateTime availableTime = getAvailableDateTime();
-        DateTime selectedTime = getDateTime();
-        return availableTime.getDay() == selectedTime.getDay();
-    }
-
-    private boolean isAvailableHourSelected() {
-        int selectedHour = mWheelHour.getCurrentValue();
-        DateTime availableTime = getAvailableDateTime();
-        int availableHour = availableTime.getHour();
-        return selectedHour == availableHour;
-    }
-
-    private void checkDateAvailable() {
-        if (!isTodaySelected())
-            return;
-        if (!isTodayAvailable())
-            selectTomorrow();
-    }
-
-    private void selectTomorrow() {
-        mWheelDate.select(1);
-    }
-
-    private boolean isTodaySelected() {
-        return mWheelDate.getCurrentItemIndex() == 0;
-    }
-
-    private boolean isTomorrowSelected() {
-        return mWheelDate.getCurrentItemIndex() == 1;
-    }
+//    private void checkDateAvailable() {
+//        if (!isTodaySelected())
+//            return;
+//        if (!isTodayAvailable())
+//            selectTomorrow();
+//    }
+//
+//    private void selectTomorrow() {
+//        mWheelDate.select(1);
+//    }
+//
+//    private boolean isTodaySelected() {
+//        return mWheelDate.getCurrentItemIndex() == 0;
+//    }
+//
+//    private boolean isTomorrowSelected() {
+//        return mWheelDate.getCurrentItemIndex() == 1;
+//    }
 
     private DateTime getCurrentDateTime() {
         DateTime time = new DateTime();
@@ -228,7 +230,7 @@ public class TimePicker extends BaseLayout {
     }
 
     private void buildAdapters() {
-        mAdapterDate = new ArrayWheelAdapter(TextUtil.getStringArray(R.array.time_picker_date));
+        //mAdapterDate = new ArrayWheelAdapter(TextUtil.getStringArray(R.array.time_picker_date));
         mAdapterHour = new NumberWheelAdapter(0, 24, 1, "点");
         mAdapterMinute = new NumberWheelAdapter(0, 60, 1, "分");
     }
@@ -240,20 +242,20 @@ public class TimePicker extends BaseLayout {
      */
     public DateTime getDateTime() {
         DateTime time = getCurrentDateTime();
-        computeDate(time);
+        //computeDate(time);
         computeHour(time);
         computeMinute(time);
         computeSecond(time);
         return time;
     }
 
-    public String getDayString() {
-        return mWheelDate.getCurrentItemString();
-    }
+//    public String getDayString() {
+//        return mWheelDate.getCurrentItemString();
+//    }
 
-    private void computeDate(DateTime time) {
-        time.addDay(mWheelDate.getCurrentValue());
-    }
+//    private void computeDate(DateTime time) {
+//        time.addDay(mWheelDate.getCurrentValue());
+//    }
 
     private void computeHour(DateTime time) {
         time.setHour(mWheelHour.getCurrentValue());
@@ -272,6 +274,7 @@ public class TimePicker extends BaseLayout {
     }
 
     public interface TimePickerListener {
-        void onPick(DateTime time);
+        void onPick(int hour, int minute);
     }
+    
 }
