@@ -92,6 +92,11 @@ public class TimePicker extends BaseLayout {
 
     public void onSelected(View v) {
     	Log.d("zr", "onSelected");
+    	DateTime currentTime = getCurrentDateTime();
+    	mWheelHour.setStartValue(0);
+        mWheelHour.setCurrentValue(currentTime.getHour());
+        mWheelMinute.setStartValue(0);
+        mWheelMinute.setCurrentValue(currentTime.getMinute());
         //if (checkInvalidTime())
             //return;
         //checkDateAvailable();

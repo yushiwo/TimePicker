@@ -28,10 +28,20 @@ public class NumberWheelAdapter extends WheelAdapter {
 
     @Override
     public String getItem(int index) {
+    	String numberString = null;
         int number = startNumber + index * interval;
-        if (TextUtil.isEmpty(label))
-            return String.valueOf(number);
-        return number + label;
+        
+        if(number < 10){
+        	numberString = "0" + number;
+        }else{
+        	numberString = String.valueOf(number);
+        }
+     
+        return numberString; 
+        
+//        if (TextUtil.isEmpty(label))
+//            return String.valueOf(number);
+//        return number + label;
     }
 
     /**
@@ -44,11 +54,16 @@ public class NumberWheelAdapter extends WheelAdapter {
         this.notifyChanged();
     }
 
+    /**
+     * 获取当前选中的数据
+     * 
+     * @param index
+     */
     @Override
     public int getValue(int index) {
         return index * this.interval + this.startNumber;
     }
-
+    
     /**
      * 获取当前起始数字
      * 
