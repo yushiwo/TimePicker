@@ -25,10 +25,10 @@
         android:layout_height="fill_parent"
         android:layout_weight="1"
         wheel:lineSplitHeight="@dimen/wheel_line_split_height"
-        wheel:splitLineColor="@color/split_line_gray"
-        wheel:textColorFirst="@color/light_s_gray"
-        wheel:textColorSecond="@color/light_gray"
-        wheel:textColorThird="@color/deep_ss_gray"
+        wheel:splitLineColor="#B8B8B8"
+        wheel:textColorFirst="#cccccc"
+        wheel:textColorSecond="#b3b3b3"
+        wheel:textColorThird="#333333"
         wheel:textSize="@dimen/font_size_s_large" />
 
     <com.example.wheel.WheelView
@@ -37,10 +37,10 @@
         android:layout_height="fill_parent"
         android:layout_weight="1"
         wheel:lineSplitHeight="@dimen/wheel_line_split_height"
-        wheel:splitLineColor="@color/split_line_gray"
-        wheel:textColorFirst="@color/light_s_gray"
-        wheel:textColorSecond="@color/light_gray"
-        wheel:textColorThird="@color/deep_ss_gray"
+        wheel:splitLineColor="#B8B8B8"
+        wheel:textColorFirst="#cccccc"
+        wheel:textColorSecond="#b3b3b3"
+        wheel:textColorThird="#333333"
         wheel:textSize="@dimen/font_size_s_large" />
 
 </LinearLayout>

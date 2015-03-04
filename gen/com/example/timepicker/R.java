@@ -11,7 +11,7 @@ public final class R {
     public static final class array {
         /**  时间选择器日期 
          */
-        public static final int time_picker_date=0x7f080000;
+        public static final int time_picker_date=0x7f070000;
     }
     public static final class attr {
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
@@ -61,45 +61,29 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
          */
         public static final int textSize=0x7f010005;
     }
-    public static final class color {
-        public static final int dark_orange=0x7f050005;
-        public static final int deep_gray=0x7f050002;
-        public static final int deep_s_gray=0x7f050008;
-        public static final int deep_ss_gray=0x7f050009;
-        public static final int gray=0x7f050003;
-        public static final int light_gray=0x7f050004;
-        public static final int light_s_gray=0x7f050007;
-        public static final int orange=0x7f050001;
-        public static final int picker_bar_bg=0x7f05000b;
-        /**  时间选择器 
-         */
-        public static final int split_line_gray=0x7f05000a;
-        public static final int translucent_80_dark=0x7f050006;
-        public static final int white=0x7f050000;
-    }
     public static final class dimen {
-        public static final int font_size_large=0x7f06000a;
-        public static final int font_size_medium=0x7f060008;
-        public static final int font_size_medium_50=0x7f060007;
-        public static final int font_size_s_large=0x7f060009;
-        public static final int font_size_small=0x7f060005;
-        public static final int font_size_small1=0x7f060006;
-        public static final int font_size_small_30=0x7f060002;
-        public static final int font_size_small_40=0x7f060003;
-        public static final int font_size_small_44=0x7f060004;
-        public static final int font_size_x_large=0x7f06000b;
-        public static final int font_size_x_large1=0x7f06000c;
-        public static final int font_size_x_small=0x7f060001;
-        public static final int font_size_xx_large=0x7f06000d;
+        public static final int font_size_large=0x7f05000a;
+        public static final int font_size_medium=0x7f050008;
+        public static final int font_size_medium_50=0x7f050007;
+        public static final int font_size_s_large=0x7f050009;
+        public static final int font_size_small=0x7f050005;
+        public static final int font_size_small1=0x7f050006;
+        public static final int font_size_small_30=0x7f050002;
+        public static final int font_size_small_40=0x7f050003;
+        public static final int font_size_small_44=0x7f050004;
+        public static final int font_size_x_large=0x7f05000b;
+        public static final int font_size_x_large1=0x7f05000c;
+        public static final int font_size_x_small=0x7f050001;
+        public static final int font_size_xx_large=0x7f05000d;
         /**  字体大小 
          */
-        public static final int font_size_xx_small=0x7f060000;
-        public static final int font_size_xxx_large=0x7f06000e;
-        public static final int font_size_xxxx_large=0x7f06000f;
-        public static final int font_size_xxxxx_large=0x7f060010;
+        public static final int font_size_xx_small=0x7f050000;
+        public static final int font_size_xxx_large=0x7f05000e;
+        public static final int font_size_xxxx_large=0x7f05000f;
+        public static final int font_size_xxxxx_large=0x7f050010;
         /**  时间选择器：滚轮行高 
          */
-        public static final int wheel_line_split_height=0x7f060011;
+        public static final int wheel_line_split_height=0x7f050011;
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
@@ -117,7 +101,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int time_picker_layout=0x7f030001;
     }
     public static final class string {
-        public static final int app_name=0x7f070000;
+        public static final int app_name=0x7f060000;
     }
     public static final class style {
         /** 
@@ -130,11 +114,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
             backward-compatibility can go here.
         
          */
-        public static final int AppBaseTheme=0x7f090000;
+        public static final int AppBaseTheme=0x7f080000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f090001;
+        public static final int AppTheme=0x7f080001;
     }
     public static final class styleable {
         /** Attributes that can be used with a wheel.
